@@ -1,0 +1,16 @@
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy.ext.declarative import declarative_base
+
+Base = declarative_base()
+
+# Buat engine untuk koneksi ke database
+engine = create_engine('sqlalchemy.url = mysql+mysqlconnector://username:password@localhost/database_name
+')
+
+# Buat sesi
+Session = sessionmaker(bind=engine)
+session = Session()
+
+# Buat semua tabel yang diperlukan jika belum ada
+Base.metadata.create_all(engine)
