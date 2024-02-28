@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, Enum
 from database import Base
 
 class User(Base):
@@ -10,3 +10,5 @@ class User(Base):
     email = Column(String(100), nullable=False, unique=True)
     alamat = Column(String(200), nullable=False)
     namalengkap = Column(String(100), nullable=False)
+    role = Column(Enum("admin", "petugas", "peminjam"), nullable=False)
+
